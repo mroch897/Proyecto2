@@ -1,16 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/4df9c1efca.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./style.css">
+  <title>Document</title>
 </head>
+
 <body>
-    
+
+  <header class="mr-section-header">
+
+    <div class="mr-section-header-layout mr-layout-flex">
+      <!-- HAMBURGER -->
+      <a href="#" role="link" class="mr-section-header-title">
+        <h1>RunForLife</h1>
+      </a>
+      <label class="mr-hamburguer-icon" for="hamburger">&#9776;</label>
+      <input type="checkbox" class="mr-hamburguer" id="hamburger">
+
+      <!-- MENU -->
+      <nav role="navigation" class="mr-section-nav">
+        <ul class="mr-layout-flex mr-section-header-nav">
+          <li><a href="#" aria-label="#" class="mr-section-header--nav-link">Home</a></li>
+          <li> <a href="#" aria-label="#" class="mr-section-header--nav-link">Productos</a></li>
+          <li><a href="#" aria-label="#" class="mr-section-header--nav-link"></a></li>
+          <li><a href="" aria-label="#" class="mr-section-header--nav-link">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="mr-layout-flex mr-sign-container">
+        <button class="sign">Sign In</button>
+      </div>
+    </div>
+    </div>
+  </header>
+
+  <main>
+
+    <div class="botones_filtros"></div>
+
+    <div id="products"></div>
+
+  </main>
 
 
-<script src="./main.js"></script>
+
+
+  <!-- Footer -->
+  <footer class="contacto">
+    <div class="container-footer">
+      <nav class="footer-nav">
+    <div class="footer-nav-col navOne">
+      <h3>Lo más buscado</h3>
+      <ul class="url-list">
+        <li>Localizar Supermercados</li>
+        <li>Listo para comer</li>
+        <li>Trabaja en Mercadona</li>
+        <li>Sala de prensa</li>
+        <li>Conoce Mercadona</li>
+        <li>Consejos</li>
+      </ul>
+    </div>
+    <div class="footer-nav-col navOne">
+      <h3>Enlaces de interés</h3>
+      <ul class="url-list">
+        <li>Compra online</li>
+        <li>Facturas online</li>
+        <li>E-Factura proveedores</li>
+        <li>Pautas Conducta Proveedor</li>
+        <li>Portal Trinidad</li>
+        <li>Legal</li>
+        <li>Portal Transparencia</li>
+      </ul>
+    </div>
+
+    <div class="footer-nav-col navOne">
+      <h3>Consejos</h3>
+      <ul class="url-list">
+        <li>Consejos de Alimentación</li>
+        <li>Consejos Perfumeria</li>
+        <li>Consejos Hogar</li>
+        <li>Consejos Mascotas</li>
+      </ul>
+    </div>
+
+    <div>
+      <ul class="footer-contact url-list">
+
+      </ul>
+      <ul class="social-list">
+        <li><span class="far fa-envelope"><span /></li>
+        <li><span class="far fa-brands fa-square-facebook"></span></li>
+        <li><span class="far fa-brands fa-twitter"></span></li>
+        <li><span class="far fa-brands fa-youtube"></span></li>
+        <li><span class="far fa-brands fa-instagram"></span></li>
+        <li><span class="far fa-brands fa-linkedin"></span></li>
+      </ul>
+      <div id="btn-faqs">
+        <a href="#">
+          <span>Preguntas frecuentes</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+  </footer>
+
+  <script src="./main.js"></script>
 </body>
+
 </html>
