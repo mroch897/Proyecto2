@@ -107,6 +107,51 @@ li {
   color: grey;
 }
 
+
+/*MAIN*/
+
+#products{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  margin:50px;
+  gap: 10px;
+
+}
+
+
+
+.img_wrap {
+  width: 100%;
+  height: auto;
+}
+
+.img_product {
+  height: 210px;
+  width: 210px;
+  object-fit: contain;
+}
+
+
+
+.descript_product {
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.title_name{
+  margin-bottom: 0.75rem;
+}
+
+h4{
+  width:210px;
+  white-space:nowrap;
+  overflow: hidden;
+  letter-spacing: 2px;
+  text-overflow: ellipsis;
+}
+
+
 /* FOOTER*/
 
 .contacto {
