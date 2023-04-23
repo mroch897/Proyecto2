@@ -67,7 +67,7 @@ const PRODUCTS = [
   },
   {
     image:
-      "https://www.salomon.com/en-us/shop/media/catalog/product/L/4/L41210400_30408aea34176dd5b52f7fc7c3c73b0a.png",
+      "https://cdn.shopify.com/s/files/1/0751/7203/products/fasfrgUntitled-1_1024x1024@2x.png?v=1634167628",
     name: "Salomon Sense Ride 4 ",
     description:
       "Zapatillas de trail running con una gran amortiguación y una suela con un excelente agarre en terrenos variados..",
@@ -97,8 +97,26 @@ const PRODUCTS = [
   },
 ];
 
+// const getProd=(shoes)=>{
+//   const getShoes=shoes.map((shoes)=>({
+//     image: shoes.image,
+//     name: shoes.name,
+//     description: shoes.description,
+//     category: shoes.category,
+//     price: shoes.price,
+//     seller: shoes.seller,
+
+//   }));
+
+// }
+
+// const printProducts=()
+
+const products$$ = document.querySelector("#products");
+
 const getProducts = (pr) => {
   return `
+  <article>
   <div class="div_product">
      <div class="img_wrap">
         <img src=${pr.image} alt=${pr.name}/ class="img_product">
@@ -109,28 +127,57 @@ const getProducts = (pr) => {
       <p class="descript_product">${pr.description}</p>
       <p class="price">${pr.price}</p>
       <p class="seller">${pr.seller}</p>
-  </div>`;
+  </div>
+  </article>`;
 };
 
+const printProducts = (PRODUCTS) => {
+  products$$.innerHTML = " ";
 
-const printProducts=()=> {
-  const products$$ = document.querySelector("#products");
-  for(pr of PRODUCTS){
-    products$$.innerHTML += getProducts(pr)
+  for (pr of PRODUCTS) {
+    products$$.innerHTML += getProducts(pr);
   }
 };
 
 const searchProduct = (event) => {
+  console.log(event.target.value);
+
   const productsFilter = PRODUCTS.filter((producto) =>
     producto.name.toLowerCase().includes(event.target.value.toLowerCase())
   );
+  console.log(productsFilter);
 
   printProducts(productsFilter);
 };
 
+const filterProductsByPrice = (PRODUCTS, maxPrice) => {
+  const filteredProducts = PRODUCTS.filter(
+    (producto)=>producto.price<=maxPrice
+  );
+  if(filteredProducts.length===0){
+    alert('Product not found')
+  }else{
+    printProducts(filteredProducts);
+
+  }
+
+  
+};
+
+const handlePriceClick = (event) => {
+  const priceValue = document.querySelector(".search_number");
+  const maxPrice = priceValue.value;
 
 
-window.addEventListener("load", printProducts);
+  filterProductsByPrice(PRODUCTS, maxPrice);
+}
 
-const searchIn = document.querySelector(".search_inp");
-searchIn.addEventListener("input", searchProduct());
+const searchButton = document.querySelector(".search-price");
+searchButton.addEventListener("click", handlePriceClick);
+
+
+
+
+const inputValue = document.querySelector(".search_inp");
+inputValue.addEventListener("input", searchProduct);
+printProducts(PRODUCTS);

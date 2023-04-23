@@ -211,6 +211,22 @@ h4{
   text-align: left;
 }
 
+.social-list{
+  display: flex;
+  gap: .75rem;
+  margin-top: 100px;
+  align-items: center;
+  justify-content: center;
+
+}
+.social-list li{
+  cursor: pointer;
+}
+
+
+
+
+
 
 
 @media screen and (max-width: 48rem) {
