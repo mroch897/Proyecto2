@@ -39,17 +39,30 @@
   </header>
 
   <main>
-    <div class="search-container"> 
-      <input type="number" class="search_number"> 
-      <button type="submit" class="search-price"></button>
-      
-      <input type="text" placeholder="Buscar..." class="search_inp">
-    
-    </div>
-   
-    <div class="botones_filtros"></div>
+    <article class="mainProducts">
+      <section class="filtersProducts">
+        <div class="search-container">
+          
+            <div class="priceFilter">
+              <input type="number" class="search_number" placeholder="Filtrar por precio">
+              <button type="submit" class="search-price">Buscar</button>
+            </div>
+            <div>
+              Selecciona por vendedor: <select name="selectFilter" id="sellerSelect"></select>
+              <button type="submit" class="resetFilters">Reset</button>
+            </div>
+          
 
-    <div id="products"></div>
+          <input type="text" placeholder="Buscar..." class="search_inp">
+
+        </div>
+      </section>
+
+      <section>
+        <div id="products"></div>
+      </section>
+
+    </article>
 
   </main>
 
@@ -60,60 +73,60 @@
   <footer class="contacto">
     <div class="container-footer">
       <nav class="footer-nav">
-    <div class="footer-nav-col navOne">
-      <h3>Lo más buscado</h3>
-      <ul class="url-list">
-        <li>Localizar Supermercados</li>
-        <li>Listo para comer</li>
-        <li>Trabaja en Mercadona</li>
-        <li>Sala de prensa</li>
-        <li>Conoce Mercadona</li>
-        <li>Consejos</li>
-      </ul>
-    </div>
-    <div class="footer-nav-col navOne">
-      <h3>Enlaces de interés</h3>
-      <ul class="url-list">
-        <li>Compra online</li>
-        <li>Facturas online</li>
-        <li>E-Factura proveedores</li>
-        <li>Pautas Conducta Proveedor</li>
-        <li>Portal Trinidad</li>
-        <li>Legal</li>
-        <li>Portal Transparencia</li>
-      </ul>
-    </div>
+        <div class="footer-nav-col navOne">
+          <h3>Lo más buscado</h3>
+          <ul class="url-list">
+            <li>Localizar Supermercados</li>
+            <li>Listo para comer</li>
+            <li>Trabaja en Mercadona</li>
+            <li>Sala de prensa</li>
+            <li>Conoce Mercadona</li>
+            <li>Consejos</li>
+          </ul>
+        </div>
+        <div class="footer-nav-col navOne">
+          <h3>Enlaces de interés</h3>
+          <ul class="url-list">
+            <li>Compra online</li>
+            <li>Facturas online</li>
+            <li>E-Factura proveedores</li>
+            <li>Pautas Conducta Proveedor</li>
+            <li>Portal Trinidad</li>
+            <li>Legal</li>
+            <li>Portal Transparencia</li>
+          </ul>
+        </div>
 
-    <div class="footer-nav-col navOne">
-      <h3>Consejos</h3>
-      <ul class="url-list">
-        <li>Consejos de Alimentación</li>
-        <li>Consejos Perfumeria</li>
-        <li>Consejos Hogar</li>
-        <li>Consejos Mascotas</li>
-      </ul>
-    </div>
+        <div class="footer-nav-col navOne">
+          <h3>Consejos</h3>
+          <ul class="url-list">
+            <li>Consejos de Alimentación</li>
+            <li>Consejos Perfumeria</li>
+            <li>Consejos Hogar</li>
+            <li>Consejos Mascotas</li>
+          </ul>
+        </div>
 
-    <div class="footer-nav-col navOne ">
-      <ul class="footer-contact url-list">
+        <div class="footer-nav-col navOne ">
+          <ul class="footer-contact url-list">
 
-      </ul>
-      <ul class="social-list">
-        <li><span class="far fa-envelope"><span /></li>
-        <li><span class="far fa-brands fa-square-facebook"></span></li>
-        <li><span class="far fa-brands fa-twitter"></span></li>
-        <li><span class="far fa-brands fa-youtube"></span></li>
-        <li><span class="far fa-brands fa-instagram"></span></li>
-        <li><span class="far fa-brands fa-linkedin"></span></li>
-      </ul>
-      <div id="btn-faqs">
-        <a href="#">
-          <span>Preguntas frecuentes</span>
-        </a>
-      </div>
+          </ul>
+          <ul class="social-list">
+            <li><span class="far fa-envelope"><span /></li>
+            <li><span class="far fa-brands fa-square-facebook"></span></li>
+            <li><span class="far fa-brands fa-twitter"></span></li>
+            <li><span class="far fa-brands fa-youtube"></span></li>
+            <li><span class="far fa-brands fa-instagram"></span></li>
+            <li><span class="far fa-brands fa-linkedin"></span></li>
+          </ul>
+          <div id="btn-faqs">
+            <a href="#">
+              <span>Preguntas frecuentes</span>
+            </a>
+          </div>
+        </div>
     </div>
-  </div>
-</nav>
+    </nav>
   </footer>
 
   <script src="./main.js"></script>

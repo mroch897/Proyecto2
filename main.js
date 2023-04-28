@@ -97,26 +97,13 @@ const PRODUCTS = [
   },
 ];
 
-// const getProd=(shoes)=>{
-//   const getShoes=shoes.map((shoes)=>({
-//     image: shoes.image,
-//     name: shoes.name,
-//     description: shoes.description,
-//     category: shoes.category,
-//     price: shoes.price,
-//     seller: shoes.seller,
-
-//   }));
-
-// }
-
-// const printProducts=()
-
 const products$$ = document.querySelector("#products");
+const optionsSelect = document.querySelector("#sellerSelect");
+const priceValue = document.querySelector(".search_number");
 
 const getProducts = (pr) => {
   return `
-  <article>
+  
   <div class="div_product">
      <div class="img_wrap">
         <img src=${pr.image} alt=${pr.name}/ class="img_product">
@@ -125,12 +112,12 @@ const getProducts = (pr) => {
         <h4 title=${pr.name}>${pr.name}</h4>
       </div>
       <p class="descript_product">${pr.description}</p>
-      <p class="price">${pr.price}</p>
+      <p class="price">${pr.price} €</p>
       <p class="seller">${pr.seller}</p>
-  </div>
-  </article>`;
+  </div>`;
 };
 
+// PRINTING PRODUCT
 const printProducts = (PRODUCTS) => {
   products$$.innerHTML = " ";
 
@@ -139,6 +126,7 @@ const printProducts = (PRODUCTS) => {
   }
 };
 
+// SEARCH ALL PRODUCT
 const searchProduct = (event) => {
   console.log(event.target.value);
 
@@ -150,34 +138,85 @@ const searchProduct = (event) => {
   printProducts(productsFilter);
 };
 
-const filterProductsByPrice = (PRODUCTS, maxPrice) => {
-  const filteredProducts = PRODUCTS.filter(
-    (producto)=>producto.price<=maxPrice
-  );
-  if(filteredProducts.length===0){
-    alert('Product not found')
-  }else{
-    printProducts(filteredProducts);
-
-  }
-
-  
+// SELECT PRODUCT BY SELLER
+const addOptionsSelect = () => {
+  const addedBrands = new Set();
+  PRODUCTS.forEach((product) => addedBrands.add(product.seller));
+  addedBrands.forEach((brand) => {
+    const select = document.createElement("option");
+    select.innerText = brand;
+    optionsSelect.appendChild(select);
+  });
 };
 
-const handlePriceClick = (event) => {
+const filterProductsBySeller = (seller) => {
+  const filteredProducts = PRODUCTS.filter(
+    (product) => product.seller === seller
+  );
+
+  printProducts(filteredProducts);
+};
+
+const selectionOption = () => {
+  const options = document.querySelectorAll("#sellerSelect").value;
+  console.log(options);
+};
+
+// FILTER PRODUCT BY PRICE
+
+const handlePriceClick = () => {
   const priceValue = document.querySelector(".search_number");
   const maxPrice = priceValue.value;
 
-
   filterProductsByPrice(PRODUCTS, maxPrice);
-}
+};
 
+const handleSeller = (event) => {
+  const selectedSeller = event.target.value;
+  filterProductsBySeller(selectedSeller);
+};
+
+const filterProductsByPrice = (PRODUCTS, maxPrice) => {
+  const filteredProducts = PRODUCTS.filter(
+    (producto) => producto.price <= maxPrice
+  );
+  if (filteredProducts.length === 0) {
+    products$$.innerHTML = `
+    <article>
+      <div class="div_product">
+        <h3>No hay ningún producto con este precio</h3>
+      </div>
+   </article>
+    `;
+  } else {
+    printProducts(filteredProducts);
+  }
+};
+
+//RESET FILTERS
+const resetAllFilters = () => {
+  products$$.innerHTML = "";
+
+  printProducts(PRODUCTS);
+  optionsSelect.value = "init";
+  priceValue.value = "init";
+};
+
+// PRICE
 const searchButton = document.querySelector(".search-price");
 searchButton.addEventListener("click", handlePriceClick);
 
+//SELLER
+const selectSeller = document.querySelector("#sellerSelect");
+selectSeller.addEventListener("change", handleSeller);
 
-
-
+//ALL
 const inputValue = document.querySelector(".search_inp");
 inputValue.addEventListener("input", searchProduct);
+
+//RESET
+const btnReset = document.querySelector(".resetFilters");
+btnReset.addEventListener("click", resetAllFilters);
+
+addOptionsSelect();
 printProducts(PRODUCTS);
