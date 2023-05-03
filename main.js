@@ -106,11 +106,12 @@ const getProducts = (pr) => {
   
   <div class="div_product">
      <div class="img_wrap">
-        <img src=${pr.image} alt=${pr.name}/ class="img_product">
+        <img src=${pr.image} alt=${pr.name} class="img_product">
+        <div class="text_kind">${pr.category}</div>
       </div>
       <div class="title_name">
         <h4 title=${pr.name}>${pr.name}</h4>
-      </div>
+      </div> 
       <p class="descript_product">${pr.description}</p>
       <p class="price">${pr.price} €</p>
       <p class="seller">${pr.seller}</p>
@@ -140,6 +141,10 @@ const searchProduct = (event) => {
 
 // SELECT PRODUCT BY SELLER
 const addOptionsSelect = () => {
+
+const selectAll = document.createElement("option");
+selectAll.innerText = "Todos";
+optionsSelect.appendChild(selectAll);
   const addedBrands = new Set();
   PRODUCTS.forEach((product) => addedBrands.add(product.seller));
   addedBrands.forEach((brand) => {
@@ -150,10 +155,16 @@ const addOptionsSelect = () => {
 };
 
 const filterProductsBySeller = (seller) => {
-  const filteredProducts = PRODUCTS.filter(
+let filteredProducts;
+
+if(seller==="Todos"){
+  filteredProducts= PRODUCTS;
+}else{
+  filteredProducts = PRODUCTS.filter(
     (product) => product.seller === seller
   );
 
+}
   printProducts(filteredProducts);
 };
 
@@ -183,9 +194,7 @@ const filterProductsByPrice = (PRODUCTS, maxPrice) => {
   if (filteredProducts.length === 0) {
     products$$.innerHTML = `
     <article>
-      <div class="div_product">
         <h3>No hay ningún producto con este precio</h3>
-      </div>
    </article>
     `;
   } else {
@@ -198,7 +207,7 @@ const resetAllFilters = () => {
   products$$.innerHTML = "";
 
   printProducts(PRODUCTS);
-  optionsSelect.value = "init";
+  optionsSelect.value = "Todos";
   priceValue.value = "init";
 };
 
