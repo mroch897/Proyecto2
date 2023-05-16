@@ -168,24 +168,44 @@ if(seller==="Todos"){
   printProducts(filteredProducts);
 };
 
+const filterProductsBySellerAndPrice = (seller, maxPrice) => {
+  let filteredProducts1;
+
+  if (seller === "Todos") {
+    filteredProducts1 = PRODUCTS.filter((product) => product.price <= maxPrice);
+  } else {
+    filteredProducts1 = PRODUCTS.filter(
+      (product) => product.seller === seller && product.price <= maxPrice
+    );
+  }
+
+  if (filteredProducts1.length === 0) {
+    products$$.innerHTML = `
+    <article>
+        <h3>No hay ningún producto con estos filtros</h3>
+   </article>
+    `;
+  } else {
+    printProducts(filteredProducts1);
+  }
+};
+
+const handlePriceAndSeller = () => {
+  const selectedSeller = optionsSelect.value;
+  const maxPrice = priceValue.value;
+
+  if (!maxPrice) {
+    filterProductsBySeller(selectedSeller);
+  } else {
+    filterProductsBySellerAndPrice(selectedSeller, maxPrice);
+  }
+};
+
 const selectionOption = () => {
   const options = document.querySelectorAll("#sellerSelect").value;
   console.log(options);
 };
 
-// FILTER PRODUCT BY PRICE
-
-const handlePriceClick = () => {
-  const priceValue = document.querySelector(".search_number");
-  const maxPrice = priceValue.value;
-
-  filterProductsByPrice(PRODUCTS, maxPrice);
-};
-
-const handleSeller = (event) => {
-  const selectedSeller = event.target.value;
-  filterProductsBySeller(selectedSeller);
-};
 
 const filterProductsByPrice = (PRODUCTS, maxPrice) => {
   const filteredProducts = PRODUCTS.filter(
@@ -202,6 +222,19 @@ const filterProductsByPrice = (PRODUCTS, maxPrice) => {
   }
 };
 
+// FILTER PRODUCT BY PRICE
+
+const handlePriceClick = () => {
+  const priceValue = document.querySelector(".search_number");
+  const maxPrice = priceValue.value;
+
+  filterProductsByPrice(PRODUCTS, maxPrice);
+};
+
+
+
+
+
 //RESET FILTERS
 const resetAllFilters = () => {
   products$$.innerHTML = "";
@@ -209,15 +242,17 @@ const resetAllFilters = () => {
   printProducts(PRODUCTS);
   optionsSelect.value = "Todos";
   priceValue.value = "init";
+  inputValue.value = "";
 };
 
 // PRICE
 const searchButton = document.querySelector(".search-price");
 searchButton.addEventListener("click", handlePriceClick);
+searchButton.addEventListener("click", handlePriceAndSeller);
 
 //SELLER
 const selectSeller = document.querySelector("#sellerSelect");
-selectSeller.addEventListener("change", handleSeller);
+selectSeller.addEventListener("change", handlePriceAndSeller);
 
 //ALL
 const inputValue = document.querySelector(".search_inp");
@@ -229,3 +264,12 @@ btnReset.addEventListener("click", resetAllFilters);
 
 addOptionsSelect();
 printProducts(PRODUCTS);
+
+
+
+
+
+
+
+
+
