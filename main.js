@@ -131,6 +131,10 @@ const printProducts = (PRODUCTS) => {
 const searchProduct = (event) => {
   console.log(event.target.value);
 
+  handlePriceAndSeller();
+  filterProductsBySellerAndPrice(optionsSelect.value, priceValue.value);
+  
+
   const productsFilter = PRODUCTS.filter((producto) =>
     producto.name.toLowerCase().includes(event.target.value.toLowerCase())
   );
@@ -264,7 +268,6 @@ btnReset.addEventListener("click", resetAllFilters);
 
 addOptionsSelect();
 printProducts(PRODUCTS);
-
 
 
 
