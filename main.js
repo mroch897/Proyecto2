@@ -131,14 +131,21 @@ const printProducts = (PRODUCTS) => {
 const searchProduct = (event) => {
   console.log(event.target.value);
 
-  handlePriceAndSeller();
-  filterProductsBySellerAndPrice(optionsSelect.value, priceValue.value);
-  
+  const searchValue = event.target.value.toLowerCase();
 
-  const productsFilter = PRODUCTS.filter((producto) =>
-    producto.name.toLowerCase().includes(event.target.value.toLowerCase())
+  let filteredProducts = PRODUCTS;
+
+  if (priceValue.value) {
+    filteredProducts = filterProductsByPrice(filteredProducts, priceValue.value);
+  }
+
+  if (optionsSelect.value && optionsSelect.value !== "Todos") {
+    filteredProducts = filterProductsBySeller(filteredProducts, optionsSelect.value);
+  }
+
+  const productsFilter = filteredProducts.filter((producto) =>
+    producto.name.toLowerCase().includes(searchValue)
   );
-  console.log(productsFilter);
 
   printProducts(productsFilter);
 };
